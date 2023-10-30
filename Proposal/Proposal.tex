@@ -21,12 +21,12 @@
 \author{\IEEEauthorblockN{Abdullah Bilici}
 \IEEEauthorblockA{\textit{Artificial Intelligence \& Data Engineering} \\
 \textit{Istanbul Technical University}\\
-bilicia@itu.edu.tr\\ 150200330}
+bilicia@itu.edu.tr\\150200330}
 \and
 \IEEEauthorblockN{Bora Boyacıoğlu}
 \IEEEauthorblockA{\textit{Artificial Intelligence \& Data Engineering} \\
 \textit{Istanbul Technical University}\\
-boyacioglu20@itu.edu.tr\\ 150200310}
+boyacioglu20@itu.edu.tr\\150200310}
 }
 
 \maketitle
@@ -98,7 +98,7 @@ In feature engineering, we will transform the preprocessed text data into a nume
 
 \begin{itemize}
     \item \textbf{TF-IDF (Term Frequency-Inverse Document Frequency):} Converting the text into numerical vectors using TF-IDF to show the importance of words in the texts.
-    \item \textbf{Word Embeddings (e.g., Word2Vec, GloVe):} Createing dense vector representations of words and gather them to represent documents.
+    \item \textbf{Word Embeddings (e.g., Word2Vec, GloVe):} Creating dense vector representations of words and gather them to represent documents.
     \item \textbf{N-grams:} We may consider n-grams (sequences of n words) to capture context and phrases in the text.
     \item \textbf{Topic Modeling (e.g., LDA, NMF):} Extracting subjects from the emails and using their distributions as features.
     \item \textbf{Sentiment Analysis:} Analyzing the sentiment of the text as a feature.
@@ -139,13 +139,15 @@ In our evaluation process, we will assess the success of our email spam classifi
 Our project's success will be judged based on the ability of the chosen algorithm to outperform the baseline model and achieve high performance metrics. The goal is to develop an effective and accurate email spam classification solution.
 
 \section{GitHub Repository}
-You can access our Github repository using this link: \href{https://github.com/abdullahbilici/E-mail-Spam-Classification}{https://github.com/abdullahbilici/E-mail-Spam-Classification}.
+You can access our Github repository using this link: \href{https://github.com/abdullahbilici/Group\_8}{https://github.com/abdullahbilici/Group\_8}.
 
 We have already sent invitations to teaching assistants. So, they will be able to see our progress. We also wanted to share the Personal Access Token for our repository: {\tiny github\_pat\_11BCDFDAQ0sVeeT5ksCRNu\_IuGbWtv4t64ThXyX9ZiN8IbbagaxK75q4DJ2I4w7vgIHREIEV5RtwbOmtAA}
 
 We are going to be updating the file \verb|Progress.txt| in order to show our progress.
 
 \section{Time Plan \& Distribution of Work}
+
+We separated and listed our tasks in a timeline in Table \ref{table: timeline} for better visuality. You can find the explanations of each task below the chart.
 
 \begin{table}[h]
     \centering
@@ -168,35 +170,61 @@ We are going to be updating the file \verb|Progress.txt| in order to show our pr
         bar height=0.7,
         bar label font=\tiny,
         group peaks height=0.2,
-        ]{1}{10} % Adjust the range according to your project duration.
+        ]{1}{10}
     
         \gantttitle{Week}{10} \\
         \gantttitlelist{1,...,10}{1} \\
     
         % Abdullah
         \ganttgroup[group/.append style={fill=blue}]{Abdullah}{1}{10} \\
-        \ganttbar[bar/.append style={fill=blue}]{Task A}{1}{3} \\
-        \ganttbar[bar/.append style={fill=blue}]{Task B}{4}{7} \\
-        \ganttbar[bar/.append style={fill=blue}]{Task C}{8}{10} \\
+        \ganttbar[bar/.append style={fill=blue}]{Text Preprocessing}{1}{2} \\
+        \ganttbar[bar/.append style={fill=blue}]{Feature Modelling}{3}{5} \\
+        \ganttbar[bar/.append style={fill=blue}]{Model Selection}{6}{6} \\
+        \ganttbar[bar/.append style={fill=blue}]{Model Training}{7}{9} \\
+        \ganttbar[bar/.append style={fill=blue}]{Conclusion}{9}{10} \\
     
         % Bora
         \ganttgroup[group/.append style={fill=green}]{Bora}{1}{10} \\
-        \ganttbar[bar/.append style={fill=green}]{Task D}{1}{2} \\
-        \ganttbar[bar/.append style={fill=green}]{Task E}{3}{5} \\
-        \ganttbar[bar/.append style={fill=green}]{Task F}{6}{10} \\
+        \ganttbar[bar/.append style={fill=green}]{Text Preprocessing}{1}{3} \\
+        \ganttbar[bar/.append style={fill=green}]{Context Analysing}{4}{5} \\
+        \ganttbar[bar/.append style={fill=green}]{Data Splitting}{6}{6} \\
+        \ganttbar[bar/.append style={fill=green}]{Model Training}{7}{9} \\
+        \ganttbar[bar/.append style={fill=green}]{Reporting}{9}{10} \\
     
         % Common Tasks
         \ganttgroup[group/.append style={fill=orange}]{Common}{1}{10} \\
-        \ganttbar[bar/.append style={fill=orange}]{Task G}{1}{6} \\
-        \ganttbar[bar/.append style={fill=orange}]{Task H}{7}{10} \\
+        \ganttbar[bar/.append style={fill=orange}]{Analysis \& Featuring}{1}{5} \\
+        \ganttbar[bar/.append style={fill=orange}]{Splitting \& Modelling}{6}{10} \\
     \end{ganttchart}
     \label{table: timeline}
 \end{table}
 
-\textit{In this section, create a timeline or Gantt chart to outline the project’s schedule. Define key milestones and deadlines, including dates for data collection, preprocessing, model development, and testing. Additionally, specify how the work will be distributed among the team members. Describe the roles and responsibilities of each team member, emphasizing their individual contributions to the project’s success. Each team member should describe his/her subproject by indicating his/her contribution to solve the problem.}
+\textbf{Abdullah Bilici}
+\begin{enumerate}
+    \item Text Preprocessing \textit{(Lowercasing, Stopword Removal)}
+    \item Feature Modelling \textit{(Transforming the text into numerical format and vectorising them)}
+    \item Model Selection \textit{(Selecting an ML model suitable for text classification)}
+    \item Model Training \textit{(Training the model)}
+    \item Conclusion \textit{(Briefly conclusing what we have accomplished)}
+\end{enumerate}
+
+\textbf{Bora Boyacıoğlu}
+\begin{enumerate}
+    \item Text Preprocessing \textit{(Tokenization, Removing Special Characters, Lemmatization or Stemming)}
+    \item Context Analysing \textit{(Capturing the context and phrases and analysing them to use as features)}
+    \item Data Splitting \textit{(Train-Test Split)}
+    \item Model Training \textit{(Training the model)}
+    \item Reporting \textit{(Reporting our results and conclusions)}
+\end{enumerate}
+
+\textbf{Common Tasks}
+\begin{enumerate}
+    \item Data Analysis and Feature Engineering \textit{(Understanding our data to work on it and generating its features)}
+    \item Data Splitting and Modelling \textit{(Understanding our data to work on it and generating its features)}
+\end{enumerate}
 
 \section{Conclusion}
-\textit{Summarize the main points of your proposal, highlighting the importance of your project and the potential impact it could have. Reiterate the problem, objectives, and your plan for addressing it. End with a clear call to action, emphasizing the significance of the project for the intended audience.}
+Our project uses data mining techniques to address the serious issue of spam E-Mails. It aims to improve E-Mail security by developing a classification model that can distinguish between legitimate and spam emails, as spam emails are getting more complex and posing serious threats to consumers. We will use various techniques, including text preprocessing and feature engineering, evaluate our model using multiple metrics, and experiment with different algorithms. A GitHub repository has been set up for transparency and collaboration. Thank you for your helps.
 
 \begin{thebibliography}{00}
 \bibitem{dataset} Harsh Sinha, Email Spam Classification, 2020, Kaggle\\{\tiny\href{https://www.kaggle.com/code/harshsinha1234/email-spam-classification-nlp/input}{https://www.kaggle.com/code/harshsinha1234/email-spam-classification-nlp/input}}
