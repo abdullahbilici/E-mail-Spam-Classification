@@ -85,14 +85,42 @@ In this section, we outline a high-level methodology for building our email spam
 \subsection{Text Preprocessing}
 To prepare the data for modeling, we will perform text preprocessing. This includes standardization tasks like removing special characters, converting text to lowercase, and tokenization. Additionally, we need to solve the issue of class imbalance.
 
+\begin{itemize}
+    \item \textbf{Tokenization:} Splitting the text into words. We may use libraries like NLTK or spaCy for this.
+    \item \textbf{Lowercasing:} Converting the text to only use lowercase characters for consistency.
+    \item \textbf{Removing Special Characters:} Useing Regex to eliminate unnecessary characters (punctuations, tags).
+    \item \textbf{Stopword Removal:} Eliminating words like and, the, in that seem extra.
+    \item \textbf{Lemmatization or Stemming:} Reducing words to their base versions (\textit{running} will be \textit{run}).
+\end{itemize}
+
 \subsection{Feature Engineering}
 In feature engineering, we will transform the preprocessed text data into a numerical format suitable for modeling. We will create feature vectors or representations that capture essential information from the emails.
+
+\begin{itemize}
+    \item \textbf{TF-IDF (Term Frequency-Inverse Document Frequency):} Converting the text into numerical vectors using TF-IDF to show the importance of words in the texts.
+    \item \textbf{Word Embeddings (e.g., Word2Vec, GloVe):} Createing dense vector representations of words and gather them to represent documents.
+    \item \textbf{N-grams:} We may consider n-grams (sequences of n words) to capture context and phrases in the text.
+    \item \textbf{Topic Modeling (e.g., LDA, NMF):} Extracting subjects from the emails and using their distributions as features.
+    \item \textbf{Sentiment Analysis:} Analyzing the sentiment of the text as a feature.
+\end{itemize}
 
 \subsection{Data Splitting}
 We will split our dataset into a training set and a testing set. This division is essential for assessing the performance of our classifier.
 
+\begin{itemize}
+    \item \textbf{Train-Test Split:} Splitting the dataset into a training set (70\% to 80\% of the data) and a testing set (20\% to 30\%) to evaluate the model's performance.
+    \item \textbf{Cross-Validation:} We may consider k-fold cross validation for more robust model evaluation.
+\end{itemize}
+
 \subsection{Model Selection and Training}
 We will select and train a machine learning model suitable for text classification. The training process involves teaching the model to distinguish between spam and ham emails.
+
+\begin{itemize}
+    \item Naive Bayes Classifier
+    \item Support Vector Machines (SVM)
+    \item Logistic Regression
+    \item Random Forest
+\end{itemize}
 
 \section{Evaluation Methods}
 In our evaluation process, we will assess the success of our email spam classification project using the following steps:
