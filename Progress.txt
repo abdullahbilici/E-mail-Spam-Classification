@@ -2,3 +2,4 @@
  30.10.2023 - Project proposal is prepared and submitted.
  11.11.2023 - Text tokenization, data preprocessing, data added to github
  13.11.2023 - Text preprocessing completed, feature modelling implemented.
+ 25.11.2023 - Data saved
