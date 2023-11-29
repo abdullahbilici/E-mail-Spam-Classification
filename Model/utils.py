@@ -93,3 +93,21 @@ def concatenate_loader(loader):
         Xs.append(X)
         ys.append(y)
     return np.concatenate(Xs, axis=0), np.concatenate(ys, axis=0)
+
+def evaluate_model(loader, model):
+    all_preds = []
+    all_true = []
+    for batch in loader:
+        X, y = batch
+
+        # Ensure X is a 2D array
+        if len(X.shape) == 1:
+            X = X.reshape(1, -1)
+
+        preds = model.predict(X)
+        all_preds.extend(preds)
+        all_true.extend(y)
+
+    # Print the classification report and confusion matrix
+    print(classification_report(all_true, all_preds))
+    print(confusion_matrix(all_true, all_preds))
