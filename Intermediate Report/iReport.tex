@@ -1,0 +1,237 @@
+\documentclass[conference]{IEEEtran}
+% \IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{pgfgantt}
+\usepackage{float}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{E-Mail Spam Classification\\
+{\Large YZV 311E Term Project Proposal}
+}
+
+\author{\IEEEauthorblockN{Abdullah Bilici}
+\IEEEauthorblockA{\textit{Artificial Intelligence \& Data Engineering} \\
+\textit{Istanbul Technical University}\\
+bilicia@itu.edu.tr\\150200330}
+\and
+\IEEEauthorblockN{Bora Boyacıoğlu}
+\IEEEauthorblockA{\textit{Artificial Intelligence \& Data Engineering} \\
+\textit{Istanbul Technical University}\\
+boyacioglu20@itu.edu.tr\\150200310}
+}
+
+\maketitle
+
+\begin{abstract}
+This documents is the intermediate report for the YZV 311E Data Mining course term project. It is about an E-Mail classification model using techniques like Natural Language Processing. It is being held by Abdullah Bilici and Bora Boyacıoğlu, Istanbul Technical University. Team number is 8.
+\end{abstract}
+
+\begin{IEEEkeywords}
+email, spam, classification, natural language processing
+\end{IEEEkeywords}
+
+\section{Introduction}
+
+\section{Related Work}
+
+\section{Proposed Work}
+
+\subsection{Model Selection}
+
+There are four models defined in our project proposal: \textbf{Naive Bayes}, \textbf{Support Vector Machines (SVM)}, \textbf{Random Forest} and \textbf{Logistic Regression}. Before using them, it is crucial to know their strengths and weaknesses. We will explain them in this section.
+
+\subsubsection{Naive Bayes}
+This model is based on Bayes' Theorem. It is a probabilistic model that uses the probability of each attribute belonging to each class to make a prediction. It is called naive because it assumes that all the attributes are independent of each other. This assumption is not true in real life but it is still a good model for classification problems. It is also a fast model to train and predict. For text classification problems, it is a preferable model.
+
+\subsubsection{Support Vector Machines (SVM)}
+This model is based on the idea of finding a hyperplane that separates the data into classes. It is a supervised learning model that can be used for both classification and regression problems. For complex problems, SVM is a powerful model to use.
+
+\subsubsection{Random Forest}
+This model is based on the idea of creating multiple decision trees and combining them to get a better result. It is a supervised learning model that can be used for both classification and regression problems. It is a powerful model that can be used for complex problems.
+
+\subsubsection{Logistic Regression}
+This model is based on the idea of finding the best fitting S-shaped curve for the data.
+
+\section{Experimental Results}
+
+We tried four different models with the goal of finding the one that pursues our goal the best. As stated in the project proposal, our models are \textbf{Naive Bayes}, \textbf{Support Vector Machines (SVM)}, \textbf{Random Forest} and \textbf{Logistic Regression}. Each one has their own advantages and disadvantages. We will try to find the best one for our problem.
+
+\subsection{Naive Bayes}
+At the first trial, we used the \textbf{Multinomial Naive Bayes} model for our problem. It is a variation of the Naive Bayes model that is used for text classification problems. It is based on the multinomial distribution of the data. The results were not that great, however. One thing about Naive Bayes is that it performs poorly when the data violates the independence assumption.
+
+We saw low results, especially with the recall value. You can see the Validation Set results in Table \ref{tab:nb1} and the Test Set results in Table \ref{tab:nb2}.
+
+\begin{table}[H]
+    \caption{Naive Bayes Validation Set Results}
+
+    \begin{tabularx}{\linewidth}{|X|X|X|X|}
+        \hline
+        \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1 Score} \\
+        \hline
+        0.8392 & 1.0 & 0.3881 & 0.5592 \\
+        \hline
+    \end{tabularx}\\
+
+    \textbf{True Positives:} 111\\
+    \textbf{False Positives:} 0\\
+    \textbf{False Negatives:} 175\\
+    \textbf{True Negatives:} 802
+    \label{tab:nb1}
+\end{table}
+
+\begin{table}[H]
+    \caption{Naive Bayes Test Set Results}
+
+    \begin{tabularx}{\linewidth}{|X|X|X|X|}
+        \hline
+        \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1 Score} \\
+        \hline
+        0.8566 & 1.0 & 0.4046 & 0.5761 \\
+        \hline
+    \end{tabularx}\\
+
+    \textbf{True Positives:} 106\\
+    \textbf{False Positives:} 0\\
+    \textbf{False Negatives:} 156\\
+    \textbf{True Negatives:} 826
+    \label{tab:nb2}
+\end{table}
+
+\subsection{Support Vector Machines (SVM)}
+In our experiment, we used \textbf{SVM} after we tried Naive Bayes. There definitely is an improvement. You can see the Validation Set results in Table \ref{tab:svm1} and the Test Set results in Table \ref{tab:svm2}. However, the results may be better. We will continue trying to find a better model.
+
+\begin{table}[H]
+    \caption{SVM Validation Set Results}
+
+    \begin{tabularx}{\linewidth}{|X|X|X|X|}
+        \hline
+        \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1 Score} \\
+        \hline
+        0.9586 & 0.9959 & 0.8462 & 0.9149 \\
+        \hline
+    \end{tabularx}\\
+
+    \textbf{True Positives:} 242\\
+    \textbf{False Positives:} 1\\
+    \textbf{False Negatives:} 44\\
+    \textbf{True Negatives:} 801
+    \label{tab:svm1}
+\end{table}
+
+\begin{table}[H]
+    \caption{SVM Test Set Results}
+
+    \begin{tabularx}{\linewidth}{|X|X|X|X|}
+        \hline
+        \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1 Score} \\
+        \hline
+        0.9504 & 0.9906 & 0.8015 & 0.8861 \\
+        \hline
+    \end{tabularx}\\
+
+    \textbf{True Positives:} 210\\
+    \textbf{False Positives:} 2\\
+    \textbf{False Negatives:} 52\\
+    \textbf{True Negatives:} 824
+    \label{tab:svm2}
+\end{table}
+
+\subsection{Random Forest}
+This time, all scores are above $90\%$, which is a sign that this is the correct model. Especially with hyperparameter tuning, these scores may be improved. Of course we will try yet another model, but Random Forest seems to be the best one so far. You can see the Validation Set results in Table \ref{tab:rf1} and the Test Set results in Table \ref{tab:rf2}.
+
+We used \verb|n_estimators=100| and \verb|random_state=42| as our parameters for Random Forest.
+
+\begin{table}[H]
+    \caption{Random Forest Validation Set Results}
+
+    \begin{tabularx}{\linewidth}{|X|X|X|X|}
+        \hline
+        \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1 Score} \\
+        \hline
+        0.9779 & 0.9852 & 0.9301 & 0.9586 \\
+        \hline
+    \end{tabularx}\\
+
+    \textbf{True Positives:} 266\\
+    \textbf{False Positives:} 4\\
+    \textbf{False Negatives:} 20\\
+    \textbf{True Negatives:} 798
+    \label{tab:rf1}
+\end{table}
+
+\begin{table}[H]
+    \caption{Random Forest Test Set Results}
+
+    \begin{tabularx}{\linewidth}{|X|X|X|X|}
+        \hline
+        \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1 Score} \\
+        \hline
+        0.9798 & 0.9839 & 0.9313 & 0.9569 \\
+        \hline
+    \end{tabularx}\\
+
+    \textbf{True Positives:} 244\\
+    \textbf{False Positives:} 4\\
+    \textbf{False Negatives:} 18\\
+    \textbf{True Negatives:} 822
+    \label{tab:rf2}
+\end{table}
+
+\subsection{Logistic Regression}
+After Random Forest, this model was a disappointment. It is a good model but it did not perform well for our problem. You can see the Validation Set results in Table \ref{tab:lr1} and the Test Set results in Table \ref{tab:lr2}.
+
+We used \verb|max_iter=10000| as our parameters for Logistic Regression.
+
+\begin{table}[H]
+    \caption{Logistic Regression Validation Set Results}
+
+    \begin{tabularx}{\linewidth}{|X|X|X|X|}
+        \hline
+        \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1 Score} \\
+        \hline
+        0.8860 & 1.0 & 0.5664 & 0.7232 \\
+        \hline
+    \end{tabularx}\\
+
+    \textbf{True Positives:} 162\\
+    \textbf{False Positives:} 0\\
+    \textbf{False Negatives:} 124\\
+    \textbf{True Negatives:} 802
+    \label{tab:lr1}
+\end{table}
+
+\begin{table}[H]
+    \caption{Logistic Regression Test Set Results}
+
+    \begin{tabularx}{\linewidth}{|X|X|X|X|}
+        \hline
+        \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1 Score} \\
+        \hline
+        0.8898 & 1.0 & 0.5840 & 0.7373 \\
+        \hline
+    \end{tabularx}\\
+
+    \textbf{True Positives:} 153\\
+    \textbf{False Positives:} 0\\
+    \textbf{False Negatives:} 109\\
+    \textbf{True Negatives:} 826
+    \label{tab:lr2}
+\end{table}
+
+\section{Conclusion}
+
+\begin{thebibliography}{00}
+\bibitem{NaN} None
+\end{thebibliography}
+
+\end{document}
