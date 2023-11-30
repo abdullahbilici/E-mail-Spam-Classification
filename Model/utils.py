@@ -11,7 +11,7 @@ import spacy
 from spacy.lang.en.stop_words import STOP_WORDS
 from collections import Counter
 
-from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.metrics import confusion_matrix
 
 nlp = spacy.load('en_core_web_sm')
 def tokenize_sentence(sentence):
@@ -108,6 +108,22 @@ def evaluate_model(loader, model):
         all_preds.extend(preds)
         all_true.extend(y)
 
-    # Print the classification report and confusion matrix
-    print(classification_report(all_true, all_preds))
-    print(confusion_matrix(all_true, all_preds))
+    # Calculate the confusion matrix
+    conf_mtrx = confusion_matrix(all_true, all_preds)
+    tn, fp, fn, tp = conf_mtrx.ravel()
+    
+    # Calculate the accuracy, precision, recall and F1 score
+    accuracy = (tp + tn) / (tp + tn + fp + fn)
+    precision = tp / (tp + fp)
+    recall = tp / (tp + fn)
+    f1 = 2 * precision * recall / (precision + recall)
+    
+    print("\033[4mConfusion Matrix:\033[0m")
+    print(f"[[TP: \033[91m{tp}\033[0m\tFP: \033[91m{fp}\033[0m\t]\n [FN: \033[91m{fn}\033[0m\tTN: \033[91m{tn}\033[0m\t]]")
+    print()
+    print("\033[4mClassification Report:\033[0m")
+    print(f"Accuracy : \033[91m{accuracy:.4f}\033[0m")
+    print(f"Precision: \033[91m{precision:.4f}\033[0m")
+    print(f"Recall   : \033[91m{recall:.4f}\033[0m")
+    print(f"F1 Score : \033[91m{f1:.4f}\033[0m")
+    print()
