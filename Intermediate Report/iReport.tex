@@ -46,6 +46,9 @@ email, spam, classification, natural language processing
 
 \section{Proposed Work}
 
+\subsection{Data Preparation}
+In transforming email data into a tabular format, we initially broke down sentences into individual words through tokenization, ensuring uniformity by converting them to lowercase and removing stopwords and punctuation. Next, in order to determine how frequently each term occurred in a particular email, the Term Frequency (TF) was computed. Additionally, uniqueness of phrases throughout the whole dataset was evaluated using the Inverse Document Frequency (IDF). We used TF and IDF to compute TF-IDF matrix, where each row corresponds to a document and each column corresponds to a unique term in the entire dataset. Values gives information about importance of token in a document amongst a collection of corpus.
+
 \subsection{Model Selection}
 
 There are four models defined in our project proposal: \textbf{Naive Bayes}, \textbf{Support Vector Machines (SVM)}, \textbf{Random Forest} and \textbf{Logistic Regression}. Before using them, it is crucial to know their strengths and weaknesses. We will explain them in this section.
@@ -229,9 +232,16 @@ We used \verb|max_iter=10000| as our parameters for Logistic Regression.
 \end{table}
 
 \section{Conclusion}
+We applied various models to a TF-IDF matrix derived from email data. Our strategy is to model a neural network that can enhance base model's performance. Our approach is to feed tokenized data into \cite{bert}Bert model to get representations of each sentence then fitting a fully connected neural network to this data to improve performance of base model. 
+
+The BERT (Bidirectional Encoder Representations from Transformers) model is a type of transformer-based neural network architecture developed for natural language processing (NLP) tasks. BERT considers the context of each word by analyzing the entire sentence bidirectionally. This bidirectional understanding allows BERT to capture intricate relationships and dependencies between words, leading to more accurate representations of given data.
+
+BERT is trained on large data and can be used for specific NLP tasks, such as text classification. This can be done by using \cite{bert}[CLS] tokens. The [CLS] token is a special token used to represent the entire input sequence in a sentence or document. This [CLS] tokens will help us to fit our data and make predictions.
+
+We will use several metrices to compare base model and NN model. Accuracy, AUC-ROC curve and F1-score are few of the metrices we will use.
 
 \begin{thebibliography}{00}
-\bibitem{NaN} None
+\bibitem{bert} Devlin, J., Chang, M., Lee, K., \& Toutanova, K. (2019). BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. North American Chapter of the Association for Computational Linguistics.
 \end{thebibliography}
 
 \end{document}
