@@ -7,3 +7,5 @@
  28.11.2023 - Model selection has been done. Decided on using Random Forest model.
  30.11.2023 - Hyperparameter tuning for Random Forest is completed. Model implemented.
  30.11.2023 - Intermediate report has been initialized.
+ 01.12.2023 - Representations created using Bert model
+ 

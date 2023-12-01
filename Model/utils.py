@@ -127,3 +127,15 @@ def evaluate_model(loader, model):
     print(f"Recall   : \033[91m{recall:.4f}\033[0m")
     print(f"F1 Score : \033[91m{f1:.4f}\033[0m")
     print()
+
+def generate_bert_data(model, tokens, batch_size):
+    n = tokens["input_ids"].shape[0]
+
+    X = np.ndarray(shape=(0,768))
+
+    for i in range(0,n,batch_size):
+        print(i) if i % 200 == 0 else None
+        output = model(tokens["input_ids"][i:i+batch_size], tokens["attention_mask"][i:i+batch_size], tokens["token_type_ids"][i:i+batch_size]).last_hidden_state[:,0,:].numpy()
+        X = np.concatenate([X, output], axis = 0)
+
+    return X

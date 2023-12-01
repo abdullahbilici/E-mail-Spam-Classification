@@ -1,17 +1,20 @@
 import numpy as np
 
 class DataLoader:
-    def __init__(self, data_path, shuffle = False, batch_size = 1):
+    def __init__(self, data, shuffle = False, batch_size = 1):
 
         self.batch_size = batch_size
         self.shuffle = shuffle
-        
-        data = np.load(data_path)
-        self.X = data[:,:-1]
-        self.y = data[:,-1]
-        
-        self.size = data.shape[0]
-        self.shape = data.shape
+        if isinstance(data, str):
+            data = np.load(data)
+            self.X = data[:,:-1]
+            self.y = data[:,-1]
+        else:
+            self.X = data[0]
+            self.y = data[1]
+
+        self.size = self.X.shape[0]
+        self.shape = self.X.shape
         
 
     def __iter__(self):
