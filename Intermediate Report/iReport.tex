@@ -42,27 +42,80 @@ email, spam, classification, natural language processing
 
 \section{Introduction}
 
+Today, Email has become a ubiquitous mode of communication, bringing with it the pervasive issue of spam emails. These messages not only fill up inboxes but also bring significant security risks, ranging from scams to the spread of malware. As the volume of email traffic grows, effectively separating spam from harmless emails has born as a big challenge. The importance of this challenge is known by the fact that a significant portion of all email traffic is spam, bringing a necessity to develop effective spam detection systems.
+
+This project, conducted as a term project of YZV 311E Data Mining course at Istanbul Technical University, aims to develop an email spam classification model. By combining techniques from Natural Language Processing (NLP) and Machine Learning (ML), our goal is to create a model that can accurately and efficiently differentiate spam emails from legitimate ones. The project is conducted by Abdullah Bilici and Bora Boyacıoğlu.
+
+Our approach involves analysing a dataset of emails, each labeled as either \textbf{spam} or \textbf{ham} (non-spam), to train various classification models. These models include Naive Bayes, Support Vector Machines (SVM), Random Forest, and Logistic Regression. Each has unique strenghts on text classification tasks. Through experimentions and analysises, we aim to identify the most effective model for this purpose.
+
+This report presents an intermediate overview of our project, detailing our methodologies, preliminary findings, and insights so far. It aims to represent our current progress and provide a basis for further development.
+
 \section{Related Work}
+
+\subsection{Literature Review}
+
+There are examples throughout the internet about spam classification. One of them is a Kaggle competition \cite{kaggle_competition}. It is a competition held in 2011. It is actually a text classification competition, not restricted by emails. Of course the idea is the same. Texts were collected from social media (blogs). There are 7086 lines labeled as spam or ham. And 33052 lines of unlabeled data. The goal is to classify the unlabeled data.
+
+Another project is a research paper \cite{researchgate}. It is a comprehensive study about spam classification. Their dataset consits of 6047 messages, with 1897 of them being spam. They used additional models, and get around 98.9\% accuracy. We will try to achieve similar results with our dataset and models.
+
+Other than that, we had a lot of small projects to analyse. The models we tried are used in a work of Balaka Biswas \cite{balaka_biswas}. The models are \textbf{Naive Bayes}, \textbf{Support Vector Machines (SVM)} and \textbf{Random Forest} and \textbf{Logistic Regression}. We considered to use this models in our project.
+
+There is also a study conducted by Faisal Kureshi \cite{faisal_kureshi}. Only \textbf{Multinomial Naive Bayes} is used in this project and a 97.8\% of accuracy is achieved.
+
+\subsection{Importance}
+
+Spam emails are a big problem for most of the Internet users, which is almost everybody from age 7 to 70. They are both annoying and also may be dangerous. Everyday, most of the emails we get are spam emails \cite{dataprot_spam}. This will require the aware people to constantly block and delete spam emails. This is a waste of time and resources. In fact, I get around 14 spams everyday. This is a big problem for me and I am sure it is a big problem for most of the people.
+
+However, this is a bigger problem for non-aware users and big companies, as security becomes an issue. Spam emails may contain viruses or phishing links. They may also be used for identity theft. This is a big problem for companies as well. They may be used to steal information or to send viruses to the company's computers. They may also be used to steal money from the company.
+
+These are the resons on why a good classification is crucial. In this study, our goal is to build a model with a high accuracy. We will try to achieve this by using various models and techniques.
 
 \section{Proposed Work}
 
 \subsection{Data Preparation}
-In transforming email data into a tabular format, we initially broke down sentences into individual words through tokenization, ensuring uniformity by converting them to lowercase and removing stopwords and punctuation. Next, in order to determine how frequently each term occurred in a particular email, the Term Frequency (TF) was computed. Additionally, uniqueness of phrases throughout the whole dataset was evaluated using the Inverse Document Frequency (IDF). We used TF and IDF to compute TF-IDF matrix, where each row corresponds to a document and each column corresponds to a unique term in the entire dataset. Values gives information about importance of token in a document amongst a collection of corpus.
+On transforming email data into a tabular format, we initially broke down sentences into individual words through tokenization, ensuring uniformity by converting them to lowercase and removing stopwords and punctuation.
+
+For this, we used an English language model. Using this model, we tokenized each sentence. Then, We collected the stopwords of English model and removed them from the tokenized sentences. We also removed the punctuations from the tokenized sentences. After that, we converted all the words to lowercase.
+
+Next, in order to determine how frequently each term occurred in a particular email, the Term Frequency (TF) was computed. Additionally, uniqueness of phrases throughout the whole dataset was evaluated using the Inverse Document Frequency (IDF). We used TF and IDF to compute TF-IDF matrix, where each row corresponds to a document and each column corresponds to a unique term in the entire dataset. Values gives information about importance of token in a document amongst a collection of corpus.
+
+In order to work with this data, we needed to reduce the amount of columns. Without this, we would have to work with 16908 columns, which would consume a lot of time and resources. We simply selected the top 10\% of features and used them for our models. This reduced the number of columns to 1691.
 
 \subsection{Model Selection}
 
 There are four models defined in our project proposal: \textbf{Naive Bayes}, \textbf{Support Vector Machines (SVM)}, \textbf{Random Forest} and \textbf{Logistic Regression}. Before using them, it is crucial to know their strengths and weaknesses. We will explain them in this section.
 
 \subsubsection{Naive Bayes}
+
+\begin{equation*}
+    P(c|d) = \frac{P(c) \prod_{1 \leq i \leq n} P(f_i|c)}{P(d)}
+\end{equation*}
+
 This model is based on Bayes' Theorem. It is a probabilistic model that uses the probability of each attribute belonging to each class to make a prediction. It is called naive because it assumes that all the attributes are independent of each other. This assumption is not true in real life but it is still a good model for classification problems. It is also a fast model to train and predict. For text classification problems, it is a preferable model.
 
 \subsubsection{Support Vector Machines (SVM)}
+
+\begin{align*}
+    \min_{w, b, \xi}\text{ } & \frac{1}{2} \| w \|^2 + C \sum_{i=1}^{n} \xi_i \\
+    \text{subject to } & y_i (w \cdot x_i + b) \geq 1 - \xi_i, \quad \xi_i \geq 0
+\end{align*}
+
 This model is based on the idea of finding a hyperplane that separates the data into classes. It is a supervised learning model that can be used for both classification and regression problems. For complex problems, SVM is a powerful model to use.
 
 \subsubsection{Random Forest}
+
+\begin{equation*}
+    Y = \frac{1}{N} \sum_{i=1}^{N} h(X, \Theta_i)
+\end{equation*}
+
 This model is based on the idea of creating multiple decision trees and combining them to get a better result. It is a supervised learning model that can be used for both classification and regression problems. It is a powerful model that can be used for complex problems.
 
 \subsubsection{Logistic Regression}
+
+\begin{equation*}
+    P(Y=1|X) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 X)}}
+\end{equation*}
+
 This model is based on the idea of finding the best fitting S-shaped curve for the data.
 
 \section{Experimental Results}
@@ -70,9 +123,10 @@ This model is based on the idea of finding the best fitting S-shaped curve for t
 We tried four different models with the goal of finding the one that pursues our goal the best. As stated in the project proposal, our models are \textbf{Naive Bayes}, \textbf{Support Vector Machines (SVM)}, \textbf{Random Forest} and \textbf{Logistic Regression}. Each one has their own advantages and disadvantages. We will try to find the best one for our problem.
 
 \subsection{Naive Bayes}
+
 At the first trial, we used the \textbf{Multinomial Naive Bayes} model for our problem. It is a variation of the Naive Bayes model that is used for text classification problems. It is based on the multinomial distribution of the data. The results were not that great, however. One thing about Naive Bayes is that it performs poorly when the data violates the independence assumption.
 
-We saw low results, especially with the recall value. You can see the Validation Set results in Table \ref{tab:nb1} and the Test Set results in Table \ref{tab:nb2}.
+We saw low results, especially with the recall value. You can see the Validation Set results in Table \ref{tab:nb1} and the Test Set results in Table \ref{tab:nb2}.
 
 \begin{table}[H]
     \caption{Naive Bayes Validation Set Results}
@@ -110,7 +164,8 @@ We saw low results, especially with the recall value. You can see the Validation
     \label{tab:nb2}
 \end{table}
 
-\subsection{Support Vector Machines (SVM)}
+\subsection{Support Vector Machines (SVM)} 
+
 In our experiment, we used \textbf{SVM} after we tried Naive Bayes. There definitely is an improvement. You can see the Validation Set results in Table \ref{tab:svm1} and the Test Set results in Table \ref{tab:svm2}. However, the results may be better. We will continue trying to find a better model.
 
 \begin{table}[H]
@@ -150,7 +205,8 @@ In our experiment, we used \textbf{SVM} after we tried Naive Bayes. There defini
 \end{table}
 
 \subsection{Random Forest}
-This time, all scores are above $90\%$, which is a sign that this is the correct model. Especially with hyperparameter tuning, these scores may be improved. Of course we will try yet another model, but Random Forest seems to be the best one so far. You can see the Validation Set results in Table \ref{tab:rf1} and the Test Set results in Table \ref{tab:rf2}.
+
+This time, all scores are above $90\%$, which is a sign that this is the correct model. Especially with hyperparameter tuning, these scores may be improved. Of course we will try yet another model, but Random Forest seems to be the best one so far. You can see the Validation Set results in Table \ref{tab:rf1} and the Test Set results in Table \ref{tab:rf2}.
 
 We used \verb|n_estimators=100| and \verb|random_state=42| as our parameters for Random Forest.
 
@@ -191,7 +247,8 @@ We used \verb|n_estimators=100| and \verb|random_state=42| as our parameters for
 \end{table}
 
 \subsection{Logistic Regression}
-After Random Forest, this model was a disappointment. It is a good model but it did not perform well for our problem. You can see the Validation Set results in Table \ref{tab:lr1} and the Test Set results in Table \ref{tab:lr2}.
+
+After Random Forest, this model was a disappointment. It is a good model but it did not perform well for our problem. You can see the Validation Set results in Table \ref{tab:lr1} and the Test Set results in Table \ref{tab:lr2}.
 
 We used \verb|max_iter=10000| as our parameters for Logistic Regression.
 
@@ -232,16 +289,21 @@ We used \verb|max_iter=10000| as our parameters for Logistic Regression.
 \end{table}
 
 \section{Conclusion}
-We applied various models to a TF-IDF matrix derived from email data. Our strategy is to model a neural network that can enhance base model's performance. Our approach is to feed tokenized data into \cite{bert}Bert model to get representations of each sentence then fitting a fully connected neural network to this data to improve performance of base model. 
+We applied various models to a TF-IDF matrix derived from email data. Our strategy is to model a neural network that can enhance base model's performance. Our approach is to feed tokenized data into Bert \cite{bert} model to get representations of each sentence then fitting a fully connected neural network to this data to improve performance of base model. 
 
 The BERT (Bidirectional Encoder Representations from Transformers) model is a type of transformer-based neural network architecture developed for natural language processing (NLP) tasks. BERT considers the context of each word by analyzing the entire sentence bidirectionally. This bidirectional understanding allows BERT to capture intricate relationships and dependencies between words, leading to more accurate representations of given data.
 
-BERT is trained on large data and can be used for specific NLP tasks, such as text classification. This can be done by using \cite{bert}[CLS] tokens. The [CLS] token is a special token used to represent the entire input sequence in a sentence or document. This [CLS] tokens will help us to fit our data and make predictions.
+BERT is trained on large data and can be used for specific NLP tasks, such as text classification. This can be done by using tokens [CLS] \cite{bert}. The [CLS] token is a special token used to represent the entire input sequence in a sentence or document. This [CLS] tokens will help us to fit our data and make predictions.
 
 We will use several metrices to compare base model and NN model. Accuracy, AUC-ROC curve and F1-score are few of the metrices we will use.
 
 \begin{thebibliography}{00}
-\bibitem{bert} Devlin, J., Chang, M., Lee, K., \& Toutanova, K. (2019). BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. North American Chapter of the Association for Computational Linguistics.
+    \bibitem{kaggle_competition} Wolverine. (2011). UMICH SI650 - Sentiment Classification. Kaggle.\\\href{https://kaggle.com/competitions/si650winter11}{kaggle\textrightarrow competitions\textrightarrow si650winter11}
+    \bibitem{researchgate} Adnan, Muhammad \& Imam, Muhammad \& Javed, Muhammad \& Murtza, Iqbal. (2023). Improving spam email classification accuracy using ensemble techniques: a stacking approach. International Journal of Information Security. 1--13. 10.1007/s10207--023--00756--1. 
+    \bibitem{balaka_biswas} Biswas, B. (2019). Email Spam Classification.\\\href{https://www.kaggle.com/code/balaka18/email-spam-classification}{kaggle.com\textrightarrow balaka18\textrightarrow email-spam-classification}
+    \bibitem{faisal_kureshi} Kureshi, F. (2022). Email Spam Classification.\\\href{https://www.kaggle.com/code/mfaisalqureshi/email-spam-detection-98-accuracy}{kaggle\textrightarrow mfaisalqureshi\textrightarrow email-spam-detection-98-accuracy}
+    \bibitem{dataprot_spam} Cveticanin, N. (2023). 20 SPAM Statistics for 2023.\\\href{https://dataprot.net/statistics/spam-statistics/}{dataprot\textrightarrow statistics\textrightarrow spam-statistics}
+    \bibitem{bert} Devlin, J., Chang, M., Lee, K., \& Toutanova, K. (2019). \textbf{BERT:} Pre-training of Deep Bidirectional Transformers for Language Understanding. North American Chapter of the Association for Computational Linguistics.
 \end{thebibliography}
 
 \end{document}
