@@ -48,6 +48,8 @@ This project, conducted as a term project of YZV 311E Data Mining course at Ista
 
 Our approach involves analysing a dataset of emails, each labeled as either \textbf{spam} or \textbf{ham} (non-spam), to train various classification models. These models include Naive Bayes, Support Vector Machines (SVM), Random Forest, and Logistic Regression. Each has unique strenghts on text classification tasks. Through experimentions and analysises, we aim to identify the most effective model for this purpose.
 
+In pursuit of enhanced performance, we plan to apply advanced techniques. One such innovation involves the integration of the BERT (Bidirectional Encoder Representations from Transformers) model—a state-of-the-art transformer-based model in NLP. Our method involves using BERT's \cite{bert} capabilities to extract CLS (Classification) tokens from the email data. Afterwards, we want to train a neural network with this enhanced data in order to outperform the baseline models we have shown.
+
 This report presents an intermediate overview of our project, detailing our methodologies, preliminary findings, and insights so far. It aims to represent our current progress and provide a basis for further development.
 
 \section{Related Work}
@@ -56,12 +58,13 @@ This report presents an intermediate overview of our project, detailing our meth
 
 There are examples throughout the internet about spam classification. One of them is a Kaggle competition \cite{kaggle_competition}. It is a competition held in 2011. It is actually a text classification competition, not restricted by emails. Of course the idea is the same. Texts were collected from social media (blogs). There are 7086 lines labeled as spam or ham. And 33052 lines of unlabeled data. The goal is to classify the unlabeled data.
 
-Another project is a research paper \cite{researchgate}. It is a comprehensive study about spam classification. Their dataset consits of 6047 messages, with 1897 of them being spam. They used additional models, and get around 98.9\% accuracy. We will try to achieve similar results with our dataset and models.
+Another project is a research paper \cite{researchgate}. It is a comprehensive study about spam classification. Their dataset consists of 6047 messages, with 1897 of them being spam. They used additional models, and get around 98.9\% accuracy. We will try to achieve similar results with our dataset and models.
 
 Other than that, we had a lot of small projects to analyse. The models we tried are used in a work of Balaka Biswas \cite{balaka_biswas}. The models are \textbf{Naive Bayes}, \textbf{Support Vector Machines (SVM)} and \textbf{Random Forest} and \textbf{Logistic Regression}. We considered to use this models in our project.
 
 There is also a study conducted by Faisal Kureshi \cite{faisal_kureshi}. Only \textbf{Multinomial Naive Bayes} is used in this project and a 97.8\% of accuracy is achieved.
 
+There are some studies that involves Bert model to classify spam emails too. One of them is shared on kaggle \cite{bert_research}. They has 4825 mails labeled as spam and 747 mails labeled an non-spam. Their approach was to adding additional layers on top of Bert model to predict label. They used Tensorflow to model a classifier.
 \subsection{Importance}
 
 Spam emails are a big problem for most of the Internet users, which is almost everybody from age 7 to 70. They are both annoying and also may be dangerous. Everyday, most of the emails we get are spam emails \cite{dataprot_spam}. This will require the aware people to constantly block and delete spam emails. This is a waste of time and resources. In fact, I get around 14 spams everyday. This is a big problem for me and I am sure it is a big problem for most of the people.
@@ -289,21 +292,38 @@ We used \verb|max_iter=10000| as our parameters for Logistic Regression.
 \end{table}
 
 \section{Conclusion}
-We applied various models to a TF-IDF matrix derived from email data. Our strategy is to model a neural network that can enhance base model's performance. Our approach is to feed tokenized data into Bert \cite{bert} model to get representations of each sentence then fitting a fully connected neural network to this data to improve performance of base model. 
+We applied various models to a TF-IDF matrix derived from email data. This models are Naive
+Bayes, Support Vector Machines (SVM), Random Forest and Logistic Regression. Results shows that recall is common problem for all models. our aim will be to improve recall performance. 
+
+Random forest model was the bets out of other methods. We get $97.98\%$ accuracy, $98.39\%$ precision, $93.13\%$ recall and $95.69\%$ F1 score. This rates are very good for base model. But we think we can improve recall and F1 score.
+
+
+
+
+
+Our strategy is to model a neural network that can enhance base model's performance. Our approach is to feed tokenized data into Bert model to get representations of each sentence then fitting a fully connected neural network to this data to improve performance of base model. 
 
 The BERT (Bidirectional Encoder Representations from Transformers) model is a type of transformer-based neural network architecture developed for natural language processing (NLP) tasks. BERT considers the context of each word by analyzing the entire sentence bidirectionally. This bidirectional understanding allows BERT to capture intricate relationships and dependencies between words, leading to more accurate representations of given data.
 
-BERT is trained on large data and can be used for specific NLP tasks, such as text classification. This can be done by using tokens [CLS] \cite{bert}. The [CLS] token is a special token used to represent the entire input sequence in a sentence or document. This [CLS] tokens will help us to fit our data and make predictions.
+BERT is trained on large data and can be used for specific NLP tasks, such as text classification. This can be done by using tokens [CLS]. The [CLS] token is a special token used to represent the entire input sequence in a sentence or document. This [CLS] tokens will help us to fit our data and make predictions.
 
 We will use several metrices to compare base model and NN model. Accuracy, AUC-ROC curve and F1-score are few of the metrices we will use.
 
 \begin{thebibliography}{00}
-    \bibitem{kaggle_competition} Wolverine. (2011). UMICH SI650 - Sentiment Classification. Kaggle.\\\href{https://kaggle.com/competitions/si650winter11}{kaggle\textrightarrow competitions\textrightarrow si650winter11}
-    \bibitem{researchgate} Adnan, Muhammad \& Imam, Muhammad \& Javed, Muhammad \& Murtza, Iqbal. (2023). Improving spam email classification accuracy using ensemble techniques: a stacking approach. International Journal of Information Security. 1--13. 10.1007/s10207--023--00756--1. 
-    \bibitem{balaka_biswas} Biswas, B. (2019). Email Spam Classification.\\\href{https://www.kaggle.com/code/balaka18/email-spam-classification}{kaggle.com\textrightarrow balaka18\textrightarrow email-spam-classification}
-    \bibitem{faisal_kureshi} Kureshi, F. (2022). Email Spam Classification.\\\href{https://www.kaggle.com/code/mfaisalqureshi/email-spam-detection-98-accuracy}{kaggle\textrightarrow mfaisalqureshi\textrightarrow email-spam-detection-98-accuracy}
-    \bibitem{dataprot_spam} Cveticanin, N. (2023). 20 SPAM Statistics for 2023.\\\href{https://dataprot.net/statistics/spam-statistics/}{dataprot\textrightarrow statistics\textrightarrow spam-statistics}
     \bibitem{bert} Devlin, J., Chang, M., Lee, K., \& Toutanova, K. (2019). \textbf{BERT:} Pre-training of Deep Bidirectional Transformers for Language Understanding. North American Chapter of the Association for Computational Linguistics.
+    
+    \bibitem{kaggle_competition} Wolverine. (2011). UMICH SI650 - Sentiment Classification. Kaggle. \\\href{https://kaggle.com/competitions/si650winter11}{kaggle\textrightarrow competitions\textrightarrow si650winter11}
+    
+    \bibitem{researchgate} Adnan, Muhammad \& Imam, Muhammad \& Javed, Muhammad \& Murtza, Iqbal. (2023). Improving spam email classification accuracy using ensemble techniques: a stacking approach. International Journal of Information Security. 1--13. 10.1007/s10207--023--00756--1. 
+    
+    \bibitem{balaka_biswas} Biswas, B. (2019). Email Spam Classification. \\\href{https://www.kaggle.com/code/balaka18/email-spam-classification}{kaggle.com\textrightarrow balaka18\textrightarrow email-spam-classification}
+    
+    \bibitem{faisal_kureshi} Kureshi, F. (2022). Email Spam Classification. \\\href{https://www.kaggle.com/code/mfaisalqureshi/email-spam-detection-98-accuracy}{kaggle\textrightarrow mfaisalqureshi\textrightarrow email-spam-detection-98-accuracy}
+    
+    \bibitem{bert_research} Spam Email Classification using BERT 
+    \\\href{https://www.kaggle.com/code/kshitij192/spam-email-classification-using-bert}{kaggle\textrightarrow kshitij192\textrightarrow spam-email-classification-using-bert}
+    
+    \bibitem{dataprot_spam} Cveticanin, N. (2023). 20 SPAM Statistics for 2023. \\\href{https://dataprot.net/statistics/spam-statistics/}{dataprot\textrightarrow statistics\textrightarrow spam-statistics}
 \end{thebibliography}
 
 \end{document}
