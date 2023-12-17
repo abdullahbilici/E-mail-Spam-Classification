@@ -94,7 +94,8 @@ def concatenate_loader(loader):
         ys.append(y)
     return np.concatenate(Xs, axis=0), np.concatenate(ys, axis=0)
 
-def evaluate_model(loader, model):
+def make_preds(loader, model):
+    
     all_preds = []
     all_true = []
     for batch in loader:
@@ -107,6 +108,10 @@ def evaluate_model(loader, model):
         preds = model.predict(X)
         all_preds.extend(preds)
         all_true.extend(y)
+
+    return all_true, all_preds
+
+def evaluate_model(all_true, all_preds):
 
     # Calculate the confusion matrix
     conf_mtrx = confusion_matrix(all_true, all_preds)
