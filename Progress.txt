@@ -10,3 +10,5 @@
  01.12.2023 - Representations created using Bert model
  02.12.2023 - Intermediate report has been modified.
  17.12.2023 - FCNN Trained
+ 28.12.2024 - Models finalised
+ 01.01.2024 - Presentation and the project finalised
